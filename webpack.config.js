@@ -1,12 +1,13 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: 'build/'
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].[chunkhash].js',
+    publicPath: 'dist/'
   },
   resolve: {
     modules: [
@@ -23,9 +24,7 @@ const config = {
       },
       {
         // legacy loader syntax as ExtractTextPlugin needs that
-        loader: ExtractTextPlugin.extract({
-          loader: 'css-loader'
-        }),
+        loader: ['style-loader', 'css-loader'],
         test: /\.css$/
       },
       {
@@ -41,7 +40,12 @@ const config = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    })
   ]
 }
 
