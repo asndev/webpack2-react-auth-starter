@@ -2,8 +2,15 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const VENDOR = [
+  'react', 'react-dom', 'react-router'
+];
+
 const config = {
-  entry: './src/index.js',
+  entry: {
+    bundle: './src/index.js',
+    vendor: VENDOR
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].[chunkhash].js'
