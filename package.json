@@ -13,12 +13,14 @@
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-preset-env": "^1.1.4",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.12.2",
     "eslint-config-google": "^0.7.1",
+    "eslint-plugin-react": "^6.8.0",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "html-webpack-plugin": "^2.26.0",
     "image-webpack-loader": "^3.1.0",
@@ -27,5 +29,10 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.2.0-rc.0",
     "webpack-dev-server": "2.2.0-rc.0"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-router": "^3.0.0"
   }
 }

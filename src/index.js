@@ -1,10 +1,18 @@
-const button = document.createElement('button');
-button.innerText = 'fetch';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-button.onclick = () => {
-  System.import('src/image').then((module) => {
-    module.default();
-  });
+const App = () => {
+  const handleClick = () => {
+    System.import('src/image').then((module) => {
+      module.default();
+    });
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick}>click</button>
+    </div>
+  );
 };
 
-document.body.appendChild(button);
+ReactDOM.render(<App />, document.getElementById('root'));
