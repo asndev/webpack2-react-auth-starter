@@ -1,8 +1,8 @@
-const button = document.createElement('button')
+const button = document.createElement('button');
 button.innerText = 'fetch';
 
 button.onclick = () => {
-  System.import('src/image').then(module => {
+  System.import('src/image').then((module) => {
     module.default();
   });
 };

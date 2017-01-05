@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npm run clean && webpack",
     "clean": "rimraf dist",
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "lint": "eslint *.js src"
   },
   "author": "asn",
   "license": "ISC",
@@ -16,6 +17,8 @@
     "babel-preset-env": "^1.1.4",
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.26.1",
+    "eslint": "^3.12.2",
+    "eslint-config-google": "^0.7.1",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "html-webpack-plugin": "^2.26.0",
     "image-webpack-loader": "^3.1.0",

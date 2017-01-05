@@ -31,7 +31,8 @@ const config = {
         use: [
           {
             loader: 'url-loader',
-            options: { limit: 40000 } // images smaller than 40kb, include it as raw
+            // images smaller than 40kb, include it as raw
+            options: {limit: 40000}
           },
           'image-webpack-loader'
         ],
@@ -47,6 +48,6 @@ const config = {
       template: 'src/index.html'
     })
   ]
-}
+};
 
 module.exports = config;

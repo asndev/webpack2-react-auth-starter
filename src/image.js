@@ -7,4 +7,4 @@ image.src = imgSrc;
 
 export default () => {
   document.body.appendChild(image);
-}
+};
