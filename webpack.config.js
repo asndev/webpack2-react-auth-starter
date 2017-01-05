@@ -6,8 +6,7 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
-    publicPath: 'dist/'
+    filename: '[name].[chunkhash].js'
   },
   resolve: {
     modules: [
