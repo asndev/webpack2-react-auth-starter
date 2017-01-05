@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => {
-  const handleClick = () => {
-    System.import('src/image').then((module) => {
-      module.default();
-    });
-  };
+import Routes from './router';
 
+const App = () => {
   return (
-    <div>
-      <button onClick={handleClick}>click</button>
-    </div>
+    <Routes />
   );
 };
 
