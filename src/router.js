@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
-import Home from 'src/components/Home';
-import Dashboard from 'src/components/Dashboard';
+import Home from 'components/Home';
+import Dashboard from 'components/Dashboard';
 
 const routes = {
   component: Home,
