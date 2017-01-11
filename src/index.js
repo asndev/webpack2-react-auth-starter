@@ -1,39 +1,27 @@
+import 'babel-polyfill';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { AppContainer } from 'react-hot-loader';
 import { browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-import configureStore from './store';
-import Root from './root';
+import { initAuth } from './store/auth';
+import { configureStore } from './store';
+import Root from './views/root';
 
-// import Routes from './router';
-import 'assets/style.css';
+import './views/assets/style.css';
 
 const store = configureStore();
+const history = syncHistoryWithStore(browserHistory, store);
 const rootElement = document.getElementById('root');
 
 function render(Root) {
   ReactDOM.render(
-    <AppContainer>
-      <Root history={browserHistory} store={store} />
-    </AppContainer>,
+    <Root history={history} store={store} />,
     rootElement
   );
 }
 
-if (module.hot) {
-  module.hot.accept('./views/root', () => {
-    render(require('./views/root').default);
-  });
-}
-
-render(Root);
-
-// const App = () => {
-//   return (
-//     <Routes />
-//   );
-// };
-
-// ReactDOM.render(<App />, document.getElementById('root'));
+initAuth(store.dispatch)
+  .then(() => render(Root))
+  .catch(error => console.error(error));

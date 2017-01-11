@@ -3,7 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR = [
-  'react', 'react-dom', 'react-router'
+  'react', 'react-dom', 'react-router', 'react-router-redux',
+  'react-redux', 'redux-saga', 'immutable'
 ];
 
 const config = {
