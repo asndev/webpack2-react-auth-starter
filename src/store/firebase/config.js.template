@@ -1,0 +1,8 @@
+
+// firebase config can be retrieved from the firebase console
+export const firebaseConfig = {
+  apiKey: 'xxxxx',
+  authDomain: 'xxxx.firebaseapp.com',
+  databaseURL: 'https://xxxxx.firebaseio.com',
+  storageBucket: 'xxxxx.appspot.com'
+};
