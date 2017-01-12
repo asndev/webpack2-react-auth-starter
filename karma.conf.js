@@ -8,7 +8,7 @@ module.exports = (config) => {
     autoWatch: true,
     reporters: ['dots'],
     logLevel: config.LOG_INFO,
-    singleRun: false,
+    singleRun: true,
     browsers: ['Chrome'],
     customLaunchers: {
       // tell TravisCI to use chromium when testing
