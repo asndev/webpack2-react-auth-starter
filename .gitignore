@@ -3,4 +3,4 @@ dist
 node_modules
 .DS_Store
 yarn-error.log
-src/store/firebase/_config.js
+/src/store/firebase/_config.js
