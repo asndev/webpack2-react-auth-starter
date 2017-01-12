@@ -1,21 +1,32 @@
-import { applyMiddleware, compose, createStore } from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import createLogger from 'redux-logger';
 import reducers from './reducers';
 import sagas from './sagas';
 
 export function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
-  let middleware = applyMiddleware(sagaMiddleware);
+  const logger = createLogger({collapsed: true});
+  let middleware = applyMiddleware(sagaMiddleware, logger);
 
   if (process.env.NODE_ENV !== 'production') {
+    // If we are not in production mode
     const devToolsExtension = window.devToolsExtension;
     if (typeof devToolsExtension === 'function') {
+      // and user has devtools extension installed, add it
       middleware = compose(middleware, devToolsExtension());
     }
   }
 
   const store = createStore(reducers, middleware);
+  // start all registered sagas
   sagaMiddleware.run(sagas);
+
+  if (module.hot) {
+    module.hot.accept('./reducers', () => {
+      store.replaceReducer(require('./reducers').default);
+    });
+  }
 
   return store;
 }

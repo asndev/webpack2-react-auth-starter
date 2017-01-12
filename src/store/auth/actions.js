@@ -1,53 +1,40 @@
 import firebase from 'firebase';
 
-
 export const authActions = {
-  SIGN_IN: 'SIGN_IN',
-  SIGN_IN_FAILED: 'SIGN_IN_FAILED',
-  SIGN_IN_FULFILLED: 'SIGN_IN_FULFILLED',
+  LOGIN_REQUESTED: 'LOGIN_REQUESTED',
+  LOGIN_FAILED: 'LOGIN_FAILED',
+  LOGIN_SUCCEEDED: 'LOGIN_SUCCEEDED',
+  LOGOUT: 'LOGOUT',
+  LOGOUT_FAILED: 'LOGOUT_FAILED',
+  LOGOUT_SUCCEEDED: 'LOGOUT_SUCCEEDED',
 
-  SIGN_OUT: 'SIGN_OUT',
-  SIGN_OUT_FAILED: 'SIGN_OUT_FAILED',
-  SIGN_OUT_FULFILLED: 'SIGN_OUT_FULFILLED',
-
-
-  signIn: authProvider => ({
-    type: authActions.SIGN_IN,
+  login: authProvider => ({
+    type: authActions.LOGIN_REQUESTED,
     payload: {authProvider}
   }),
 
-  signInFailed: error => ({
-    type: authActions.SIGN_IN_FAILED,
-    payload: {error}
-  }),
-
-  signInFulfilled: authUser => ({
-    type: authActions.SIGN_IN_FULFILLED,
+  loginSucceeded: authUser => ({
+    type: authActions.LOGIN_SUCCEEDED,
     payload: {authUser}
   }),
 
-  signInWithGithub: () => authActions.signIn(
-    new firebase.auth.GithubAuthProvider()
-  ),
-
-  signInWithGoogle: () => authActions.signIn(
-    new firebase.auth.GoogleAuthProvider()
-  ),
-
-  signInWithTwitter: () => authActions.signIn(
-    new firebase.auth.TwitterAuthProvider()
-  ),
-
-  signOut: () => ({
-    type: authActions.SIGN_OUT
-  }),
-
-  signOutFailed: error => ({
-    type: authActions.SIGN_OUT_FAILED,
+  loginFailed: error => ({
+    type: authActions.LOGIN_FAILED,
     payload: {error}
   }),
 
-  signOutFulfilled: () => ({
-    type: authActions.SIGN_OUT_FULFILLED
-  })
+  logout: () => ({type: authActions.LOGOUT}),
+
+  logoutSucceeded: () => ({type: authActions.LOGOUT_SUCCEEDED}),
+
+  logoutFailed: error => ({
+    type: authActions.LOGOUT_FAILED,
+    payload: {error}
+  }),
+
+  // TODO just add all providers + activate @ firebase
+  loginWithGoogle: () => authActions.login(
+    new firebase.auth.GoogleAuthProvider()
+  )
+
 };

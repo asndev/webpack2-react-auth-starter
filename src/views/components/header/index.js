@@ -1,11 +1,15 @@
-import React, { PropTypes } from 'react';
-import Button from 'views/components/button';
+import React, {PropTypes} from 'react';
 
-const Header = ({authenticated, signOut}) => {
+import './header.scss';
+
+const Header = ({authenticated, logout}) => {
   return (
     <header className="header">
-      <ul className="header__actions">
-        {authenticated ? <li><Button onClick={signOut}>Sign out</Button></li> : null}
+      <h1 className="header__title">Application</h1>
+      <ul className="header__status">
+        {authenticated ?
+          <li><a onClick={logout}>Sign out</a></li> :
+          <li>not-signed-in</li>}
       </ul>
     </header>
   );
@@ -13,7 +17,7 @@ const Header = ({authenticated, signOut}) => {
 
 Header.propTypes = {
   authenticated: PropTypes.bool.isRequired,
-  signOut: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired
 };
 
 export default Header;

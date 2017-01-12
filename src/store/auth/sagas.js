@@ -1,55 +1,51 @@
-/* eslint-disable no-constant-condition */
-import { browserHistory as history } from 'react-router';
-import { call, fork, put, take } from 'redux-saga/effects';
-import { firebaseAuth } from 'store/firebase';
-import { authActions } from './actions';
+import {browserHistory as history} from 'react-router';
+import {call, fork, put, take} from 'redux-saga/effects';
+import {firebaseAuth} from 'store/firebase';
+import {authActions} from './actions';
 
-function* signIn(authProvider) {
+function* login(authProvider) {
   try {
-    const authData = yield call([firebaseAuth, firebaseAuth.signInWithPopup], authProvider);
-    yield put(authActions.signInFulfilled(authData.user));
+    const authData = yield call(
+      [firebaseAuth, firebaseAuth.signInWithPopup],
+      authProvider
+    );
+    yield put(authActions.loginSucceeded(authData.user));
     yield history.push('/');
-  }
-  catch (error) {
-    yield put(authActions.signInFailed(error));
+  } catch (error) {
+    yield put(authActions.loginFailed(error));
   }
 }
 
-function* signOut() {
+function* logout() {
   try {
     yield call([firebaseAuth, firebaseAuth.signOut]);
-    yield put(authActions.signOutFulfilled());
-    yield history.replace('/sign-in');
-  }
-  catch (error) {
-    yield put(authActions.signOutFailed(error));
+    yield put(authActions.logoutSucceeded());
+    yield history.replace('/login');
+  } catch (error) {
+    yield put(authActions.logoutFailed(error));
   }
 }
 
-
-//=====================================
-//  WATCHERS
-//-------------------------------------
-
-function* watchSignIn() {
+/* eslint-disable no-constant-condition */
+function* watchLogin() {
+  // Take every LoginRequest action
   while (true) {
-    let { payload } = yield take(authActions.SIGN_IN);
-    yield fork(signIn, payload.authProvider);
+    let {payload} = yield take(authActions.LOGIN_REQUESTED);
+    // and yield a signin action with the given payload
+    yield fork(login, payload.authProvider);
   }
 }
 
-function* watchSignOut() {
+function* watchLogout() {
+  // Take every logout action
   while (true) {
-    yield take(authActions.SIGN_OUT);
-    yield fork(signOut);
+    yield take(authActions.LOGOUT);
+    // and yield a signout
+    yield fork(logout);
   }
 }
-
-//=====================================
-//  AUTH SAGAS
-//-------------------------------------
 
 export const authSagas = [
-  fork(watchSignIn),
-  fork(watchSignOut)
+  fork(watchLogin),
+  fork(watchLogout)
 ];

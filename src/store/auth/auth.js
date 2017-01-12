@@ -1,20 +1,15 @@
-import { firebaseAuth } from 'store/firebase';
-import { authActions } from './actions';
+import {firebaseAuth} from 'store/firebase';
+import {authActions} from './actions';
 
-
-export function initAuth(dispatch) {
+export const initAuth = (dispatch) => {
   return new Promise((resolve, reject) => {
-    const unsubscribe = firebaseAuth.onAuthStateChanged(
-      authUser => {
+    firebaseAuth.onAuthStateChanged((authUser) => {
         if (authUser) {
-          dispatch(authActions.signInFulfilled(authUser));
+          dispatch(authActions.loginSucceeded(authUser));
         }
-
         resolve();
-        unsubscribe();
       },
-
       error => reject(error)
     );
   });
-}
+};
