@@ -23,6 +23,9 @@ const VENDOR = [
 // TODO split into webpack.config.dev.js etc.
 
 const config = module.exports = {
+  performance: {
+    hints: 'warning'
+  },
   resolve: {
     extensions: ['.js', '.json'],
     modules: [
