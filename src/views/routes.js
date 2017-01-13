@@ -1,8 +1,6 @@
 import {isAuthenticated} from 'store/auth';
 import App from './app';
 import LoginContainer from './container/login';
-// test whether this is a workaroudn for #2
-import DashboardContainer from './container/dashboard';
 
 export const paths = {
   ROOT: '/',
@@ -32,11 +30,10 @@ export const getRoutes = getState => {
     component: App,
     childRoutes: [{
       indexRoute: {
-//         getComponent(location, cb) {
-//           System.import('./container/dashboard')
-//             .then(module => cb(null, module.default));
-//         },
-        component: DashboardContainer,
+        getComponent(location, cb) {
+          System.import('./container/dashboard')
+            .then(module => cb(null, module.default));
+        },
         onEnter: requireAuth(getState)
       }
     }, {
