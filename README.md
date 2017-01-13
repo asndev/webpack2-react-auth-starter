@@ -22,7 +22,7 @@ shrimpit
 
 ### Firebase Auth
 ```
-mv ./src/store/firebase/config.js.template ./src/store/firebase/config.js
+./src/store/firebase/config.js
 ```
 - Fill in your firebase api key
 - Enable at least one signup provider within firebase (eg Google or Github)
