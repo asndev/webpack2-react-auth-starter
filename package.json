@@ -10,9 +10,9 @@
     "build": "cross-env NODE_ENV=production webpack",
     "clean": "rimraf target",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "test": "cross-env NODE_ENV=test karma start",
-    "test:watch": "cross-env NODE_ENV=test karma start --auto-watch",
-    "lint": "eslint *.js src server",
+    "test": "npm run lint && cross-env NODE_ENV=test karma start --single-run",
+    "test:watch": "cross-env NODE_ENV=test karma start",
+    "lint": "eslint *.js src",
     "shrimpit": "shrimpit --tree src"
   },
   "dependencies": {
