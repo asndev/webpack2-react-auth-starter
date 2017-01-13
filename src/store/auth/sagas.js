@@ -1,9 +1,11 @@
 import {browserHistory as history} from 'react-router';
-import {call, fork, put, take} from 'redux-saga/effects';
+import {call, fork, put, takeLatest} from 'redux-saga/effects';
 import {firebaseAuth} from 'store/firebase';
 import {authActions} from './actions';
 
-function* login(authProvider) {
+function* login(action) {
+  const {authProvider} = action.payload;
+
   try {
     const authData = yield call(
       [firebaseAuth, firebaseAuth.signInWithPopup],
@@ -26,23 +28,14 @@ function* logout() {
   }
 }
 
-/* eslint-disable no-constant-condition */
 function* watchLogin() {
   // Take every LoginRequest action
-  while (true) {
-    let {payload} = yield take(authActions.LOGIN_REQUESTED);
-    // and yield a signin action with the given payload
-    yield fork(login, payload.authProvider);
-  }
+  yield takeLatest(authActions.LOGIN_REQUESTED, login);
 }
 
 function* watchLogout() {
   // Take every logout action
-  while (true) {
-    yield take(authActions.LOGOUT);
-    // and yield a signout
-    yield fork(logout);
-  }
+  yield takeLatest(authActions.LOGOUT, logout);
 }
 
 export const authSagas = [
