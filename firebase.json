@@ -24,9 +24,6 @@
           {"key": "Cache-Control", "value": "max-age=3600"}
         ]
       }
-    ],
-    "rewrites": [
-      {"source": "**", "destination": "/index.html"}
     ]
   }
 }
