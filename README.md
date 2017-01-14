@@ -34,7 +34,7 @@ shrimpit
 - Fill in your firebase api key
 - Enable at least one signup provider within firebase (eg Google or Github)
 
-### Firebase Deploy
+### Firebase Deployment with travis ci
 - Update firebase.json
 - Generate a ci token with: 'firebase login:ci'
 - Set the generated token as an env variable within travis (FIREBASE_TOKEN = token)
