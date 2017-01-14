@@ -1,13 +1,23 @@
 import {applyMiddleware, compose, createStore} from 'redux';
+import {browserHistory} from 'react-router';
+import {routerMiddleware} from 'react-router-redux';
+
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import reducers from './reducers';
 import sagas from './sagas';
 
+
 export function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
+  const routerReduxMiddleware = routerMiddleware(browserHistory);
   const logger = createLogger({collapsed: true});
-  let middleware = applyMiddleware(sagaMiddleware, logger);
+
+  let middleware = applyMiddleware(
+    sagaMiddleware,
+    routerReduxMiddleware,
+    logger
+  );
 
   if (process.env.NODE_ENV !== 'production') {
     // If we are not in production mode
