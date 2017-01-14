@@ -64,7 +64,10 @@ const config = module.exports = {
   },
   plugins: [
     new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(ENV)
+      'process.env': {
+        // react in prod mode!
+        NODE_ENV': JSON.stringify(ENV)
+      }
     }),
     new LoaderOptionsPlugin({
       minimize: PROD_ENV,
