@@ -4,8 +4,14 @@
 ## Starter
 
 ```
-git clone https://github.com/asndev/webpack2-react-auth-starter.git
-cd webpack2-react-auth-starter
+git clone https://github.com/asndev/webpack2-react-auth-starter.git my-awesome-project
+cd my-awesome-project
+rm -rf .git
+git init
+git add .
+git commit -m 'init'
+// git remote add origin <your-git-repo>.git
+// git push origin master
 yarn
 npm start
 ```
