@@ -1,11 +1,8 @@
-import {browserHistory as history} from 'react-router';
 import {call, fork, put, takeLatest} from 'redux-saga/effects';
 import {push, replace} from 'react-router-redux';
 
 import {firebaseAuth} from 'store/firebase';
 import {authActions} from './actions';
-
-
 
 function* login(action) {
   const {authProvider} = action.payload;
