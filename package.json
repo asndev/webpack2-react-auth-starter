@@ -69,7 +69,7 @@
     "sass-loader": "~4.1.1",
     "shrimpit": "^0.8.0",
     "style-loader": "~0.13.1",
-    "webpack": "^2.2.0-rc.4",
+    "webpack": "^2.2.0",
     "webpack-dev-server": "2.2.0"
   }
 }
