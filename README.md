@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/asndev/webpack2-react-auth-starter.svg?branch=master)](https://travis-ci.org/asndev/webpack2-react-auth-starter) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![Build Status](https://travis-ci.org/asndev/webpack2-react-auth-starter.svg?branch=master)](https://travis-ci.org/asndev/webpack2-react-auth-starter) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![Greenkeeper badge](https://badges.greenkeeper.io/asndev/webpack2-react-auth-starter.svg)](https://greenkeeper.io/)
 
 
 ## Starter
