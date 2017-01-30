@@ -3,6 +3,12 @@
 
 ## Starter
 
+### In Action
+
+- [How Much Coffee Tracker](https://github.com/asndev/how-much-coffee-tracker)
+
+### Getting started
+
 ```
 git clone https://github.com/asndev/webpack2-react-auth-starter.git my-awesome-project
 cd my-awesome-project
