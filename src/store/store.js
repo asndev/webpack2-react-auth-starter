@@ -1,17 +1,16 @@
-import {applyMiddleware, compose, createStore} from 'redux';
-import {browserHistory} from 'react-router';
-import {routerMiddleware} from 'react-router-redux';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { browserHistory } from 'react-router';
+import { routerMiddleware } from 'react-router-redux';
 
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import reducers from './reducers';
 import sagas from './sagas';
 
-
 export function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
   const routerReduxMiddleware = routerMiddleware(browserHistory);
-  const logger = createLogger({collapsed: true});
+  const logger = createLogger({ collapsed: true });
 
   let middleware = applyMiddleware(
     sagaMiddleware,

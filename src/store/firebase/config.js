@@ -1,4 +1,3 @@
-
 // firebase config can be retrieved from the firebase console
 export const firebaseConfig = {
   apiKey: 'AIzaSyDPKv5vE8XMAw5XTWExal6XrtxGm1KIXx0',

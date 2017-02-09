@@ -1,16 +1,13 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-import {authActions, getAuth} from 'store/auth';
+import { authActions, getAuth } from 'store/auth';
 import Header from 'views/components/header';
 
-const App = ({authenticated, children, logout}) => {
+const App = ({ authenticated, children, logout }) => {
   return (
     <div>
-      <Header
-        authenticated={authenticated}
-        logout={logout}
-      />
+      <Header authenticated={authenticated} logout={logout} />
       <main>{children}</main>
     </div>
   );
