@@ -9,7 +9,7 @@ module.exports = config => {
     reporters: ['dots'],
     logLevel: config.LOG_INFO,
     singleRun: false,
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
     customLaunchers: {
       // tell TravisCI to use chromium when testing
       Chrome_travis_ci: {
@@ -23,8 +23,9 @@ module.exports = config => {
     }
   });
 
+  // In case we do not want to use phantom, but real chrome
   // Detect if this is TravisCI running the tests and tell it to use chromium
-  if (process.env.TRAVIS) {
-    config.browsers = ['Chrome_travis_ci'];
-  }
+  // if (process.env.TRAVIS) {
+  //   config.browsers = ['Chrome_travis_ci'];
+  // }
 };
