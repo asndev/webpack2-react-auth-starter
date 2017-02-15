@@ -1,4 +1,5 @@
 sudo: false
+
 language: node_js
 
 node_js:
@@ -6,6 +7,10 @@ node_js:
 
 git:
   depth: 1
+
+cache:
+  directories:
+    - node_modules
 
 before_install:
   - npm install codecov.io coveralls
@@ -15,7 +20,3 @@ after_success:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - npm run build
   -  test $TRAVIS_PULL_REQUEST_BRANCH = "" && ./node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN
-
-branches:
-  only:
-    - master
