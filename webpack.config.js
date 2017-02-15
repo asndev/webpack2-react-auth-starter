@@ -8,7 +8,6 @@ const HotModule = require('webpack/lib/HotModuleReplacementPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 const ENV = process.env.NODE_ENV;
 const DEV_ENV = ENV === 'development';
