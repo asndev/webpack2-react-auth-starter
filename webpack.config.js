@@ -70,6 +70,9 @@ const config = module.exports = {
     ]
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
     new DefinePlugin({
       'process.env': {
         // react in prod mode!
@@ -108,10 +111,6 @@ if (DEV_ENV || PROD_ENV) {
     hash: false,
     inject: 'body',
     template: './src/index.html'
-  }));
-
-  config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-    names: ['vendor', 'manifest']
   }));
 }
 
