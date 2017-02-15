@@ -8,10 +8,6 @@ node_js:
 git:
   depth: 1
 
-cache:
-  directories:
-    - node_modules
-
 before_install:
   - npm install codecov.io coveralls
 
