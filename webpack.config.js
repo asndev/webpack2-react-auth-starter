@@ -71,7 +71,8 @@ const config = module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest']
+      names: ['vendor'],
+      minChunks: Infinity
     }),
     new DefinePlugin({
       'process.env': {
@@ -142,17 +143,22 @@ if (PROD_ENV) {
   config.output.filename = '[name].[chunkhash].js';
   config.plugins.push(
     new ExtractTextPlugin('styles.[contenthash].css'),
-    new UglifyJsPlugin({
-      comments: false,
+    new webpack.optimize.UglifyJsPlugin({
       compress: {
-        dead_code: true,
+        warnings: false,
         screw_ie8: true,
+        conditionals: true,
         unused: true,
-        warnings: false
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
       },
-      mangle: {
-        screw_ie8: true
-      }
+      output: {
+        comments: false,
+      },
     })
   );
 }
