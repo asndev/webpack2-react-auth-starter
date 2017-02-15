@@ -15,6 +15,7 @@ const PROD_ENV = ENV === 'production';
 const TEST_ENV = ENV === 'test';
 
 const VENDOR = [
+  'babel-polyfill',
   'react',
   'react-dom',
   'react-router',
@@ -22,8 +23,8 @@ const VENDOR = [
   'react-redux',
   'redux-saga',
   'immutable',
-  'classnames',
-  'reselect'
+  'reselect',
+  'firebase'
 ];
 
 // TODO split into webpack.config.dev.js etc.

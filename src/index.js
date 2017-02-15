@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -14,8 +14,8 @@ import './views/styles/globals.scss';
 const store = configureStore();
 const rootElement = document.getElementById('root');
 
-function render(Root) {
-  ReactDOM.render(
+function init(Root) {
+  render(
     <AppContainer>
       <Root
         history={syncHistoryWithStore(browserHistory, store)}
@@ -28,7 +28,7 @@ function render(Root) {
 
 if (module.hot) {
   module.hot.accept('./views/root', () => {
-    render(require('./views/root').default);
+    init(require('./views/root').default);
   });
 }
 
@@ -54,5 +54,5 @@ new Promise((resolve, reject) => {
     error => reject(error)
   );
 })
-  .then(_ => render(Root))
+  .then(_ => init(Root))
   .catch(e => console.error(e));

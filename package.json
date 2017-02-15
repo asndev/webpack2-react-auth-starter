@@ -17,7 +17,9 @@
     "test": "npm run lint && cross-env NODE_ENV=test karma start --single-run",
     "test:watch": "cross-env NODE_ENV=test karma start",
     "lint": "eslint *.js src",
-    "shrimpit": "shrimpit --tree src"
+    "shrimpit": "shrimpit --tree src",
+    "analyze": "cross-env NODE_ENV=production webpack --json | webpack-bundle-size-analyzer",
+    "webpack-json": "cross-env NODE_ENV=production webpack --json > wp.json"
   },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
