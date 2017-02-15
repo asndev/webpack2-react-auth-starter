@@ -70,10 +70,6 @@ const config = module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor'],
-      minChunks: Infinity
-    }),
     new DefinePlugin({
       'process.env': {
         // react in prod mode!
@@ -141,6 +137,10 @@ if (PROD_ENV) {
   config.devtool = 'hidden-source-map';
   config.entry.bundle.unshift('babel-polyfill');
   config.output.filename = '[name].[chunkhash].js';
+  config.plugins.unshift(new webpack.optimize.CommonsChunkPlugin({
+    names: ['vendor'],
+    minChunks: Infinity
+  }));
   config.plugins.push(
     new ExtractTextPlugin('styles.[contenthash].css'),
     new webpack.optimize.UglifyJsPlugin({
