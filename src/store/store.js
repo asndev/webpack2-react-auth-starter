@@ -16,11 +16,7 @@ export function configureStore() {
   } else {
     const createLogger = require('redux-logger');
     const logger = createLogger({ collapsed: true });
-    middleware = applyMiddleware(
-      sagaMiddleware,
-      routerReduxMiddleware,
-      logger
-    );
+    middleware = applyMiddleware(sagaMiddleware, routerReduxMiddleware, logger);
   }
 
   if (process.env.NODE_ENV !== 'production') {
