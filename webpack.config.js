@@ -14,19 +14,6 @@ const DEV_ENV = ENV === 'development';
 const PROD_ENV = ENV === 'production';
 const TEST_ENV = ENV === 'test';
 
-const VENDOR = [
-  'babel-polyfill',
-  'react',
-  'react-dom',
-  'react-router',
-  'react-router-redux',
-  'react-redux',
-  'redux-saga',
-  'immutable',
-  'reselect',
-  'firebase'
-];
-
 // TODO split into webpack.config.dev.js etc.
 
 const config = module.exports = {
@@ -93,8 +80,7 @@ const config = module.exports = {
 
 if (DEV_ENV || PROD_ENV) {
   config.entry = {
-    bundle: ['./src/index.js'],
-    vendor: VENDOR
+    bundle: ['./src/index.js']
   };
 
   config.output = {
@@ -138,8 +124,10 @@ if (PROD_ENV) {
   config.entry.bundle.unshift('babel-polyfill');
   config.output.filename = '[name].[chunkhash].js';
   config.plugins.unshift(new webpack.optimize.CommonsChunkPlugin({
-    names: ['vendor'],
-    minChunks: Infinity
+    name: 'vendor',
+    minChunks: function(module, count) {
+      return module.resource && module.resource.includes('node_modules');
+    }
   }));
   config.plugins.push(
     new ExtractTextPlugin('styles.[contenthash].css'),
