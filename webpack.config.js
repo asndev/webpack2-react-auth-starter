@@ -153,11 +153,11 @@ if (PROD_ENV) {
         dead_code: true,
         evaluate: true,
         if_return: true,
-        join_vars: true,
+        join_vars: true
       },
       output: {
-        comments: false,
-      },
+        comments: false
+      }
     })
   );
 }
