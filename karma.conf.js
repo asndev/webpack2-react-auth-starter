@@ -3,10 +3,17 @@ module.exports = config => {
     frameworks: ['jasmine'],
     files: [{ pattern: './src/**/*.spec.js' }],
     preprocessors: {
-      './src/**/*.spec.js': ['webpack', 'sourcemap']
+      './src/**/*.spec.js': ['webpack', 'sourcemap'],
+      'src/**/*.js': ['coverage']
     },
     autoWatch: true,
-    reporters: ['dots'],
+    reporters: ['dots', 'coverage'],
+    coverageReporter: {
+      dir: 'coverage',
+      reporters: [
+        { type: 'lcovonly', subdir: '.', file: 'report-lcovonly.txt' }
+      ]
+    },
     logLevel: config.LOG_INFO,
     singleRun: false,
     browsers: ['PhantomJS'],
@@ -22,7 +29,6 @@ module.exports = config => {
       noInfo: true
     }
   });
-
   // In case we do not want to use phantom, but real chrome
   // Detect if this is TravisCI running the tests and tell it to use chromium
   // if (process.env.TRAVIS) {
