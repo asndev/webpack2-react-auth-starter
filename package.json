@@ -78,6 +78,6 @@
     "shrimpit": "^0.11.0",
     "style-loader": "~0.14.0",
     "webpack": "^2.2.0",
-    "webpack-dev-server": "2.4.2"
+    "webpack-dev-server": "2.4.5"
   }
 }
