@@ -35,7 +35,7 @@
     "reselect": "~2.5.4"
   },
   "devDependencies": {
-    "autoprefixer": "~6.7.0",
+    "autoprefixer": "~7.0.1",
     "babel-core": "~6.24.0",
     "babel-eslint": "~7.1.1",
     "babel-loader": "~6.4.0",
