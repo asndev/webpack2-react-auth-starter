@@ -72,7 +72,7 @@
     "prettier": "^0.22.0",
     "react-addons-test-utils": "~15.4.2",
     "react-hot-loader": "3.0.0-beta.5",
-    "redux-logger": "^2.8.1",
+    "redux-logger": "^3.0.4",
     "rimraf": "^2.5.4",
     "sass-loader": "~6.0.1",
     "shrimpit": "^0.11.0",
