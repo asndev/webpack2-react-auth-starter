@@ -52,7 +52,7 @@
     "eslint-plugin-prettier": "^2.0.0",
     "eslint-plugin-react": "~6.10.0",
     "extract-text-webpack-plugin": "2.1.0",
-    "firebase": "~3.7.0",
+    "firebase": "~4.0.0",
     "firebase-tools": "3.5.0",
     "gzip-size-cli": "^2.0.0",
     "html-webpack-plugin": "~2.28.0",
